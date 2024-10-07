@@ -11,7 +11,11 @@
   <body>
     <main>
         <div class="top">
-            <button>Record</button>
+          <button id="recordButton">Start Recording</button>
+          <p id="status">Not Recording</p>
+      
+          <!-- Link to the external JavaScript file -->
+          <script src="{{ url_for('static', filename='index.js') }}"></script>
         </div>
         <div class="middle">
             <input type="checkbox">Rap</input>
