@@ -3,6 +3,7 @@ const status = document.getElementById('status');
 let mediaRecorder;
 let audioChunks = [];
 
+
 recordButton.addEventListener('click', () => {
     if (recordButton.textContent === "Start Recording") {
         startRecording();
