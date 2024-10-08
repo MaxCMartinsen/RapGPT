@@ -26,9 +26,10 @@ def generate_voice(lyrics):  # Accept lyrics as a parameter
 
 def merge_audio():
     audio1 = AudioSegment.from_file("./src/Resources/beat1.mp3")
-    audio2 = AudioSegment.from_file("./uploads/final_audio.mp3")
-    audio2.volume = 3
-    audio1.volume = 0.5
+    # audio2 = AudioSegment.from_file("./uploads/final_audio.mp3")
+    audio2 = AudioSegment.from_file("./src/speech.mp3")
+    audio2.volume = 10
+    audio1.volume = 1
     audio1 = audio1[:(audio2.duration_seconds * 1000)]
     final_audio = audio1.overlay(audio2)
     final_audio.export("./uploads/merged_audio.mp3", format="mp3")
