@@ -41,7 +41,7 @@ def merge_audio():
 
 @app.route('/receive-data', methods=['POST'])
 def receive_data():
-    data = request.get_json()  # Use request.get_json() to explicitly parse JSON
+    data = request.get_json(force=True)  # Use request.get_json() to explicitly parse JSON
     if data is None:
         return jsonify({"error": "Invalid content type or empty payload"}), 400
 
