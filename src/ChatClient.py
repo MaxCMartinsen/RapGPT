@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 apikey = os.getenv("rapgpt_api")
 client = OpenAI(api_key=apikey)
-audio_file= open("./uploads/recording.mp3", "rb")
+audio_file= open("./uploads/recording.webm", "rb")
 transcription = client.audio.transcriptions.create(
   model="whisper-1", 
   file=audio_file
