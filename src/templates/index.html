@@ -35,7 +35,6 @@
 
               var audioControls = document.getElementById("audioControls");
 
-
               let currentSong = null
               let audioElement = document.getElementById("audio");
              audioElement.src = currentSong
@@ -46,20 +45,41 @@
       var bcheckbox = document.getElementById("beatcb");
       
 
-      // Check if the checkbox is checked
-      if (bcheckbox.checked) {
-        console.log("beat checkbox is checked");
-        beatcheckbox = true
-        currentSong = "../uploads/final_audio1.mp3"
-        
-        audioControls.load();
-      } else {
-        console.log("beat checkbox is not checked");
-        beatcheckbox = false
-        currentSong = "../uploads/merged_audio.mp3"
-        audioControls.load();
-      }
-    });
+            // Check if the checkbox is checked
+            if (bcheckbox.checked) {
+              console.log("beat checkbox is checked");
+              beatcheckbox = true
+              // The variable you want to send to Python
+              const myVariable = beatcheckbox;
+
+              // Send the variable using fetch
+              fetch('http://127.0.0.1:5000/receive-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Charset': 'UTF-8',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ variable: myVariable })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(text) });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response from server:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+            } else {
+              console.log("beat checkbox is not checked");
+              beatcheckbox = false
+            }
+          });
+
 
     document.getElementById("clonecb").addEventListener("change", function() {
 
