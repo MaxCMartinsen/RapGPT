@@ -1,9 +1,12 @@
+from flask import Flask, request
+import subprocess
+import os
 from openai import OpenAI
 from pathlib import Path
-import os
+
 apikey = os.getenv("rapgpt_api")
 client = OpenAI(api_key=apikey)
-audio_file= open("./uploads/recording.webm", "rb")
+audio_file = open("./uploads/recording.mp3", "rb")
 transcription = client.audio.transcriptions.create(
   model="whisper-1", 
   file=audio_file
@@ -27,5 +30,4 @@ response = client.audio.speech.create(
   input=lyrics,
   speed="1.2"
 )
-
 response.stream_to_file(speech_file_path)
