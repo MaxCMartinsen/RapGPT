@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from audio_handler import save_audio
+import ChatClient as cc
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def save_audio_route():
 
     audio_file = request.files['audio']
     audio_path = save_audio(audio_file)
-    
+    cc.generate_lyrics()
     return f"Saved to {audio_path}"
 
 if __name__ == '__main__':
