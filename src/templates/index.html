@@ -28,17 +28,19 @@
             </audio>
         </div>
         <div class="bottom">
-          <audio controls id="audioControls">
-            <source type="audio/mp3" src="../uploads/merged_audio.mp3">
-            Your browser does not support the audio element.
-          </audio>
+            <audio controls id = "audioControls">
+              
+                
+               
+              <source src = "..\uploads\merged_audio.mp3" type="audio/mp3">
+            </audio>
 
             <script>
 
               var audioControls = document.getElementById("audioControls");
               let currentSong = null
               let audioElement = document.getElementById("audio");
-              console.log(audioElement.src);
+           
               let beatcheckbox = false
               let clonecheckbox = false
 
