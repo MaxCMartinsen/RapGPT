@@ -4,6 +4,7 @@ from moviepy.editor import concatenate_audioclips, AudioFileClip
 from pydub import AudioSegment
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import audio_handler as ah
 app = Flask(__name__)
 CORS(app)
 
@@ -25,6 +26,7 @@ def generate_voice(lyrics):  # Accept lyrics as a parameter
         for chunk in audio:
             file.write(chunk)
         merge_audio()
+        ah.to_OGG("./merged_audio.mp3")
         
     
     print("Audio generated successfully")
@@ -38,4 +40,5 @@ def merge_audio():
     audio1 = audio1[:(audio2.duration_seconds * 1000)]
     final_audio = audio1.overlay(audio2)
     final_audio.export("./uploads/merged_audio.mp3", format="mp3")
+    print("Audio merged successfully")
 

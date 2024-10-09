@@ -22,22 +22,23 @@
             <input type="checkbox" id = "beatcb">Beat</input>
            
             <input type="checkbox" id = "clonecb">Clone Voice</input>
+
+            <audio controls id="audioControls">
+              Your browser does not support the audio element.
+            </audio>
         </div>
         <div class="bottom">
-            <audio controls id = "audioControls">
-              
-                
-               
-              <source id = audio type="audio/mp3">
-            </audio>
+          <audio controls id="audioControls">
+            <source type="audio/mp3" src="../uploads/merged_audio.mp3">
+            Your browser does not support the audio element.
+          </audio>
 
             <script>
 
               var audioControls = document.getElementById("audioControls");
-
               let currentSong = null
               let audioElement = document.getElementById("audio");
-             audioElement.src = currentSong
+              console.log(audioElement.src);
               let beatcheckbox = false
               let clonecheckbox = false
 
