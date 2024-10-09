@@ -3,7 +3,10 @@ from elevenlabs import play
 from moviepy.editor import concatenate_audioclips, AudioFileClip
 from pydub import AudioSegment
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
+
 beat = False
 
 def generate_voice(lyrics):  # Accept lyrics as a parameter
@@ -18,11 +21,9 @@ def generate_voice(lyrics):  # Accept lyrics as a parameter
     )
 
     audio = client.generate(text=lyrics, voice=voice)
-    receive_data()
     with open("./uploads/final_audio.mp3", "wb") as file:
         for chunk in audio:
             file.write(chunk)
-    if beat == True:
         merge_audio()
         
     
@@ -38,16 +39,3 @@ def merge_audio():
     final_audio = audio1.overlay(audio2)
     final_audio.export("./uploads/merged_audio.mp3", format="mp3")
 
-
-@app.route('/receive-data', methods=['POST'])
-def receive_data():
-    data = request.get_json(force=True)  # Use request.get_json() to explicitly parse JSON
-    if data is None:
-        return jsonify({"error": "Invalid content type or empty payload"}), 400
-
-    variable = data.get('variable')
-    print(f"Received variable from JavaScript: {variable}")
-    return jsonify({"status": "success", "received_variable": variable})
-
-if __name__ == '__main__':
-    app.run(debug=True)
