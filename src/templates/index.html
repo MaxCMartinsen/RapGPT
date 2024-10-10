@@ -32,9 +32,8 @@
     </div>
     
     <div class="bottom">
-      <audio controls id="audioControls">
-        <source src="{{ url_for('static', filename='uploads/merged_audio.mp3') }}" type="audio/mp3">
-       
+      <audio controls id="audioControls" preload="auto">
+        <source src="{{ url_for('static', filename='uploads/final_audio.mp3') }}" type="audio/mp3" id="srcAudio">
       </audio>
     </div>
   </main>

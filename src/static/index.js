@@ -1,4 +1,7 @@
 const recordButton = document.getElementById('recordButton');
+const beatButton = document.getElementById('beatcb');
+const cloneButton = document.getElementById('clonecb');
+const sourceAudio = document.getElementById('srcAudio');
 const status = document.getElementById('status');
 let mediaRecorder;
 let audioChunks = [];
@@ -14,6 +17,19 @@ recordButton.addEventListener('click', () => {
         stopRecording();
     }
 });
+
+beatButton.addEventListener('click', () => {
+    if (beatButton.checked) {
+        sourceAudio.src = "{{ url_for('static', filename='uploads/merged_audio.mp3') }}";
+        console.log("Playing merged audio (beat)");
+    } else {
+        sourceAudio.src = "{{ url_for('static', filename='uploads/final_audio.mp3') }}";
+        console.log("Playing final audio (no beat)");
+    }
+    sourceAudio.load();
+    sourceAudio.play();
+});
+
 
 function startRecording() {
     navigator.mediaDevices.getUserMedia({ audio: true })
