@@ -1,65 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RapGPT</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <main class="main-content">
+    <h1 class="hallo">RapGPT</h1>
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RapGPT</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <div class="top">
-          <button id="recordButton">Start Recording</button>
-          <p id="status">Not Recording</p>
+    <div class="top">
+      <img src="{{ url_for('static', filename='recordicon.png') }}" id="recordButton" class="record-icon">
+      <p id="status" class="status-text">Not Recording</p>
+    </div>
+    
+    <div class="middle">
+      <label for="beatcb" class="checkbox-label">
+        <input type="checkbox" id="beatcb"> Beat
+      </label>
       
-          <!-- Link to the external JavaScript file -->
-          <script src="{{ url_for('static', filename='index.js') }}"></script>
-        </div>
-        <div class="middle">
-            <input type="checkbox" id = "beatcb">Beat</input>
-           
-            <input type="checkbox" id = "clonecb">Clone Voice</input>
-        </div>
-        <div class="bottom">
-            <audio controls id = "audioControls">
-              <source src="{{ url_for('static', filename='uploads/merged_audio.mp3') }}" type="audio/mp3">
-              
-            </audio>
-
-            <script>
-
-              var audioControls = document.getElementById("audioControls");
-              let currentSong = null
-              let audioElement = document.getElementById("audio");
-              
-              let beatcheckbox = false
-              let clonecheckbox = false
-
-            document.getElementById("beatcb").addEventListener("change", function() {
-            var bcheckbox = document.getElementById("beatcb");
-      
-    document.getElementById("clonecb").addEventListener("change", function() {
-
-      var clonecbox = document.getElementById("clonecb");
-
-
-    if (clonecbox.checked) {
-        console.log("clone checkbox is checked");
-        clonecheckbox = true
-      } else {
-        console.log("clone checkbox is not checked");
-        clonecheckbox = false
-      }
-    });
-  });
-             
-              
-            </script>
-        </div>
-    </main>
-    <script src="index.js"></script>
-  </body>
+      <label for="clonecb" class="checkbox-label">
+        <input type="checkbox" id="clonecb"> Clone
+      </label>
+    </div>
+    
+    <div class="bottom">
+      <audio controls id="audioControls">
+        <source src="{{ url_for('static', filename='uploads/merged_audio.mp3') }}" type="audio/mp3">
+       
+      </audio>
+    </div>
+  </main>
+  
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
 </html>

@@ -1,0 +1,97 @@
+/* Reset some default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content {
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+}
+
+/* Header styles */
+.hallo {
+    font-size: 4rem;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+/* Top section styles */
+.top {
+    margin-bottom: 0px;
+}
+
+.record-icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+
+
+}
+
+.status-text {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Middle section styles */
+.middle {
+    margin-bottom: 30px;
+}
+
+.checkbox-label {
+    font-size: 1rem;
+    color: #333;
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Bottom section styles */
+.bottom {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+audio {
+    width: 500px;
+    align-self: center;
+    margin: 0 auto;
+}
+
+/* For responsive design */
+@media (max-width: 600px) {
+    .hallo {
+        font-size: 2rem;
+    }
+
+    .record-icon {
+        width: 80px;
+    }
+
+    .checkbox-label {
+        font-size: 0.9rem;
+    }
+
+  
+}
+
