@@ -1,4 +1,4 @@
-from flask import Flask, json, request
+from flask import Flask, request
 import os
 from openai import OpenAI
 from pathlib import Path
@@ -10,7 +10,7 @@ def generate_lyrics():
     client = OpenAI(api_key=apikey)
     
     # Define paths
-    audio_file_path = Path("./src/static/uploads/recording.mp3")
+    audio_file_path = Path("./uploads/recording.mp3")
     speech_file_path = Path(__file__).parent / "speech.mp3"
 
     try:
@@ -28,14 +28,11 @@ def generate_lyrics():
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": text},
-                {"role": "user", "content": "Answer the sentence in rap; make a description for a beat that you would like to use for the rap; and response in json, lyrics called lyrics, and description called description."}
+                {"role": "user", "content": "Answer the sentence in rap"}
             ]
         )
         lyrics = completion.choices[0].message.content
         print(lyrics)
-        description = json.loads(completion.choices[0].message.content)
-        description = description["description"]
-        print(description)
 
         # Generate and save speech
         response = client.audio.speech.create(

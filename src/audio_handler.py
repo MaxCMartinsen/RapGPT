@@ -1,6 +1,6 @@
 import os
 
-UPLOAD_FOLDER = './src/static/uploads/'
+UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 from pydub import AudioSegment
