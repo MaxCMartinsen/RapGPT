@@ -3,11 +3,20 @@ const status = document.getElementById('status');
 let mediaRecorder;
 let audioChunks = [];
 
+let recording = false
 
 recordButton.addEventListener('click', () => {
-    if (recordButton.textContent === "Start Recording") {
+    if (recording === false) {
+        recording = true
+        recordButton.src = "/static/recording.png"
+        recordButton.width = 240;  // Change the width to 500 pixels
+        recordButton.height = 240;
         startRecording();
     } else {
+        recording = false
+        recordButton.src = "/static/recordicon.png"
+        recordButton.width = 200;  // Change the width to 500 pixels
+        recordButton.height = 200;
         stopRecording();
     }
 });
@@ -19,6 +28,7 @@ function startRecording() {
             mediaRecorder.start();
             recordButton.textContent = "Stop Recording";
             status.textContent = "Recording...";
+
 
             mediaRecorder.ondataavailable = event => {
                 audioChunks.push(event.data);
@@ -35,7 +45,7 @@ function startRecording() {
                 })
                 .then(response => response.text())
                 .then(data => {
-                    status.textContent = "Recording saved!";
+                    status.textContent = "Generating rap...";
                     console.log("Audio saved:", data);
                 })
                 .catch(error => {
