@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 from audio_handler import save_audio
 import ChatClient as cc
 from flask_cors import CORS
@@ -21,3 +21,8 @@ def save_audio_route():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+@app.route('/uploads/<path:filename>')
+def serve_audio(filename):
+    return send_from_directory('uploads', filename)

@@ -25,7 +25,8 @@
         </div>
         <div class="bottom">
             <audio controls id = "audioControls">
-              <source src="uploads\./merged_audio.mp3" type="audio/mp3">
+              <source src="{{ url_for('static', filename='uploads/merged_audio.mp3') }}" type="audio/mp3">
+              
             </audio>
 
             <script>
@@ -33,7 +34,7 @@
               var audioControls = document.getElementById("audioControls");
               let currentSong = null
               let audioElement = document.getElementById("audio");
-           
+              
               let beatcheckbox = false
               let clonecheckbox = false
 
