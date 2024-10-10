@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body, html {
@@ -12,12 +13,23 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+
+html {
+    background: rgb(255,255,255);
+    background: linear-gradient(38deg, rgba(255,255,255,1) 22%, rgba(216,191,236,1) 62%, rgba(255,182,182,1) 100%);
+}
+
+body {
+    background-color: #ffffff00;
 }
 
 .main-content {
     text-align: center;
     width: 80%;
     max-width: 800px;
+    background-color: #ffffff00;
 }
 
 /* Header styles */
@@ -76,6 +88,27 @@ audio {
     width: 500px;
     align-self: center;
     margin: 0 auto;
+}
+
+.record-btn {
+    background-color: #fcfcfc7e;
+    color: #6e6e6e;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    /* border: 0.5rem solid; */
+    border-radius: 20px;
+    border: 0.3rem solid;
+    border-color: white;
+    transition: background-color 0.2s, box-shadow 0.4s;
+}
+
+.record-btn:hover {
+    background-color: #fcfcfcd5;
+    box-shadow: #333 0px 0px 10px;
 }
 
 /* For responsive design */

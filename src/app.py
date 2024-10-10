@@ -41,7 +41,7 @@ def save_audio_route():
     return f"Saved to {audio_path}"
 
 
-@app.route('/uploads/<path:filename>')
+@app.route('/src/static/uploads/<path:filename>')
 def serve_audio(filename):
     print("don")
     return send_from_directory('uploads', filename)

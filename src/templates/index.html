@@ -13,8 +13,12 @@
     <h1 class="hallo">RapGPT</h1>
     
     <div class="top">
-      <img src="{{ url_for('static', filename='recordicon.png') }}" id="recordButton" class="record-icon">
+      <!-- <img src="{{ url_for('static', filename='recordicon.png') }}" id="recordButton" class="record-icon"> -->
       <p id="status" class="status-text">Not Recording</p>
+
+      <button id="recordButton" class="record-btn">
+        <p>Record</p>
+      </button>
     </div>
     
     <div class="middle">

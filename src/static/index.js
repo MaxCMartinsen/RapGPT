@@ -8,15 +8,9 @@ let recording = false
 recordButton.addEventListener('click', () => {
     if (recording === false) {
         recording = true
-        recordButton.src = "/static/recording.png"
-        recordButton.width = 240;  // Change the width to 500 pixels
-        recordButton.height = 240;
         startRecording();
     } else {
         recording = false
-        recordButton.src = "/static/recordicon.png"
-        recordButton.width = 200;  // Change the width to 500 pixels
-        recordButton.height = 200;
         stopRecording();
     }
 });
