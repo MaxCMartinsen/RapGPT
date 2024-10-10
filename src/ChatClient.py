@@ -28,14 +28,16 @@ def generate_lyrics():
             model="gpt-4o",
             messages=[
                 {"role": "system", "content": text},
-                {"role": "user", "content": "Answer the sentence in rap; make a description for a beat that you would like to use for the rap; and response in json, lyrics called lyrics, and description called description."}
+                {"role": "user", "content": "Answer the sentence in rap; make a description (max 200 charaters) for a beat that you would like to use for the rap; and response in json, lyrics called lyrics, and description called description."}
             ]
         )
         lyrics = completion.choices[0].message.content
+        lyrics = json.loads["lyrics"]
         print(lyrics)
-        description = json.loads(completion.choices[0].message.content)
-        description = description["description"]
-        print(description)
+        # description = json.loads(completion.choices[0].message.content)
+        # description = description["description"]
+        # lyrics = description["lyrics"]
+        # print(description)
 
         # Generate and save speech
         response = client.audio.speech.create(
