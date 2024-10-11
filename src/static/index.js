@@ -55,7 +55,7 @@ function startRecording() {
                 })
                 .then(response => response.text())
                 .then(data => {
-                    status.textContent = "Generating rap...";
+                    status.textContent = "Processing complete.";
                     console.log("Audio saved:", data);
                 })
                 .catch(error => {

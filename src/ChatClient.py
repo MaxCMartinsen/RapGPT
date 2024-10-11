@@ -11,7 +11,7 @@ def generate_lyrics():
     
     # Define paths
     audio_file_path = Path("./src/static/uploads/recording.mp3")
-    speech_file_path = Path(__file__).parent / "speech.mp3"
+    speech_file_path = Path("./src/static/uploads/speech.mp3")
 
     try:
         # Transcription

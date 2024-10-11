@@ -17,7 +17,7 @@ import requests
 
 def generate_voice(lyrics):  # Accept lyrics as a parameter
     client = ElevenLabs(
-        api_key="sk_9bad27c0e85678bc95d3304cd21bb5eb7c1ec3d2f3199fcc", # Defaults to ELEVEN_API_KEY
+        api_key="sk_5ebfe0d699658a5de0dcc3cfe8b2394a0ac87a6ffbfd1500", # Defaults to ELEVEN_API_KEY
     )
 
     voice = client.clone(
@@ -46,7 +46,7 @@ def generate_voice(lyrics):  # Accept lyrics as a parameter
    
 
     url = "https://api.elevenlabs.io/v1/voices/" + voice.voice_id
-    headers = {"xi-api-key": "sk_9bad27c0e85678bc95d3304cd21bb5eb7c1ec3d2f3199fcc"}
+    headers = {"xi-api-key": "sk_5ebfe0d699658a5de0dcc3cfe8b2394a0ac87a6ffbfd1500"}
     response = requests.request("DELETE", url, headers=headers)
     print(123)
     print(response.text)
@@ -54,11 +54,10 @@ def generate_voice(lyrics):  # Accept lyrics as a parameter
 def merge_audio():
     audio1 = AudioSegment.from_file("./src/Resources/beat1.mp3")
     audio2 = AudioSegment.from_file("./src/static/uploads/final_audio.mp3")
-    # audio2 = AudioSegment.from_file("./src/speech.mp3")
-    audio2.volume = 10
-    audio1.volume = 1
-    audio1 = audio1[:(audio2.duration_seconds * 1000)]
-    final_audio = audio1.overlay(audio2)
+    audio2_louder = audio2 + 5
+    audio1_quieter = audio1 - 5
+    audio1_quieter = audio1_quieter[:(audio2_louder.duration_seconds * 1000)]
+    final_audio = audio1_quieter.overlay(audio2_louder)
     final_audio.export("./src/static/uploads/merged_audio.mp3", format="mp3")
     print("Audio merged successfully")
 

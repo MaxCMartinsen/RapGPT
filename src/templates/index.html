@@ -32,10 +32,6 @@
     </div>
     
     <div class="bottom">
-      <!-- <audio controls id="audioControls" preload="auto">
-        <source src="{{ url_for('static', filename='uploads/final_audio.mp3') }}" type="audio/mp3" id="srcAudio">
-      </audio> -->
-
       <div id="audio1" class="audio-control">
         <audio controls>
             <source src="{{ url_for('static', filename='uploads/final_audio.mp3') }}" type="audio/mp3">
@@ -76,8 +72,7 @@
             document.getElementById('audio2').style.display = 'block';
         } else if (!beatCheckbox.checked && !cloneCheckbox.checked) {
             document.getElementById('audio3').style.display = 'block';
-        }
-        else if (beatCheckbox.checked && !cloneCheckbox.checked) {
+        } else if (beatCheckbox.checked && !cloneCheckbox.checked) {
             document.getElementById('audio3').style.display = 'block';
         }
         
