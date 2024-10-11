@@ -20,10 +20,10 @@ recordButton.addEventListener('click', () => {
 
 beatButton.addEventListener('click', () => {
     if (beatButton.checked) {
-        sourceAudio.src = "{{ url_for('static', filename='uploads/merged_audio.mp3') }}";
+        sourceAudio.src = "/static/uploads/merged_audio.mp3";
         console.log("Playing merged audio (beat)");
     } else {
-        sourceAudio.src = "{{ url_for('static', filename='uploads/final_audio.mp3') }}";
+        sourceAudio.src = "/static/uploads/final_audio.mp3";
         console.log("Playing final audio (no beat)");
     }
     sourceAudio.load();

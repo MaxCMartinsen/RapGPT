@@ -32,12 +32,64 @@
     </div>
     
     <div class="bottom">
-      <audio controls id="audioControls" preload="auto">
+      <!-- <audio controls id="audioControls" preload="auto">
         <source src="{{ url_for('static', filename='uploads/final_audio.mp3') }}" type="audio/mp3" id="srcAudio">
-      </audio>
+      </audio> -->
+
+      <div id="audio1" class="audio-control">
+        <audio controls>
+            <source src="{{ url_for('static', filename='uploads/final_audio.mp3') }}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    
+    <div id="audio2" class="audio-control">
+        <audio controls>
+            <source src="{{ url_for('static', filename='uploads/merged_audio.mp3') }}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    
+    <div id="audio3" class="audio-control">
+        <audio controls>
+            <source src="{{ url_for('static', filename='uploads/speech.mp3') }}" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </div>
   </main>
   
   <script src="{{ url_for('static', filename='index.js') }}"></script>
+  <script>
+    document.addEventListener('click', (event) => {
+        const beatCheckbox = document.getElementById('beatcb');
+        const cloneCheckbox = document.getElementById('clonecb');
+
+        // Hide all audio controls
+        document.querySelectorAll('.audio-control').forEach(audio => {
+            audio.style.display = 'none';
+        });
+
+        // Show the selected audio control based on checkbox state
+        if (!beatCheckbox.checked && cloneCheckbox.checked) {
+            document.getElementById('audio1').style.display = 'block';
+        } else if (beatCheckbox.checked && cloneCheckbox.checked) {
+            document.getElementById('audio2').style.display = 'block';
+        } else if (!beatCheckbox.checked && !cloneCheckbox.checked) {
+            document.getElementById('audio3').style.display = 'block';
+        }
+        else if (beatCheckbox.checked && !cloneCheckbox.checked) {
+            document.getElementById('audio3').style.display = 'block';
+        }
+        
+    });
+    document.addEventListener('keydown', (event) => {
+        const key = event.key;
+        
+        if (key === 'r') {
+            // reload page
+            location.reload();
+        }
+    });
+</script>
 </body>
 </html>
