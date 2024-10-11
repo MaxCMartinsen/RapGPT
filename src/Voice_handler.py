@@ -3,16 +3,17 @@ from elevenlabs import play
 import elevenlabs
 from moviepy.editor import concatenate_audioclips, AudioFileClip
 from pydub import AudioSegment
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, redirect, url_for, render_template
 from flask_cors import CORS
 import audio_handler as ah
 app = Flask(__name__)
 CORS(app)
 
+
+
 beat = False
 
 import requests
-
 
 
 def generate_voice(lyrics):  # Accept lyrics as a parameter
@@ -60,4 +61,8 @@ def merge_audio():
     final_audio = audio1_quieter.overlay(audio2_louder)
     final_audio.export("./src/static/uploads/merged_audio.mp3", format="mp3")
     print("Audio merged successfully")
+    
+
+
+
 
